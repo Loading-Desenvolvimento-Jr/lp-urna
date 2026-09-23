@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Landing page — Urna Loading
 
-## Getting Started
+Site de apresentação do [Urna Loading](https://github.com/), o aplicativo de votação
+da Loading Jr. Next.js 16 (App Router) + Tailwind CSS v4 + TypeScript.
 
-First, run the development server:
+## Rodando
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O site sobe em `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build   # build de produção
+npm run lint    # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estrutura
 
-## Learn More
+```text
+app/
+├── layout.tsx            # Poppins, metadata, Open Graph
+├── globals.css           # tokens de design e animações
+├── page.tsx              # landing (hero, produto, como funciona, docs, download)
+├── sitemap.ts
+└── docs/
+    ├── page.tsx          # índice da documentação
+    └── [slug]/page.tsx   # guia individual, gerado estaticamente
+components/
+├── site-header.tsx       # topo fixo com menu mobile
+├── site-footer.tsx
+├── phone.tsx             # moldura de celular + telas do app recriadas em CSS
+├── store-badges.tsx      # selos App Store / Google Play
+├── reveal.tsx            # revelação no scroll (IntersectionObserver)
+└── logo.tsx
+content/
+└── docs.ts               # conteúdo dos guias e tutoriais
+lib/
+└── site.ts               # nome, textos base e links das lojas
+public/
+├── brand/urna-mark.svg   # marca, extraída do export do Figma
+└── illustrations/        # ilustrações reaproveitadas do app
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Identidade visual
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Os tokens são espelhados de `lib/core/design_system/` do app Flutter, para o site e o
+aplicativo não divergirem:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Token           | Hex       | Uso                          |
+| --------------- | --------- | ---------------------------- |
+| `primary`       | `#6B43B5` | ações, destaques             |
+| `primary-dark`  | `#4E2F86` | bloco de transparência       |
+| `primary-soft`  | `#D8C2FF` | grifos, gráficos secundários |
+| `primary-tint`  | `#F0EDF8` | fundos de apoio              |
+| `teal`          | `#00C1B2` | acento pontual               |
+| `canvas`        | `#F8F9FA` | fundo da página              |
+| `ink` / `muted` | `#1F2937` / `#666666` | texto           |
 
-## Deploy on Vercel
+Tipografia: Poppins (400/500/600/700), carregada via `next/font`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## O que falta preencher
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Links das lojas** — em `lib/site.ts`, `stores.ios` e `stores.android`. Enquanto
+   forem `null`, os selos aparecem em estado "Em breve" e não são clicáveis.
+2. **Screenshots reais do app** — hoje as telas no site são recriadas em CSS a partir
+   do design system (`components/phone.tsx`). Trocar por capturas reais é opcional.
+3. **Imagem de Open Graph** — adicionar `app/opengraph-image.png` (1200×630).
+4. **Domínio** — ajustar `site.url` em `lib/site.ts` antes do deploy.
+
+## Editando a documentação
+
+Os guias ficam em `content/docs.ts`, um array de objetos. Cada guia tem seções, e cada
+seção é uma lista de blocos: `p` (parágrafo), `list`, `steps` (passo a passo numerado)
+e `callout` (destaque, com tom `info` ou `warn`). Adicionar um guia novo é adicionar um
+item ao array — a rota, o índice lateral, o rodapé e o sitemap se atualizam sozinhos.
+
+## Deploy
+
+Projeto pronto para a Vercel: importar o repositório e publicar, sem variáveis de
+ambiente.
