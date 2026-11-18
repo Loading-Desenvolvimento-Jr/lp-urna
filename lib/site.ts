@@ -10,12 +10,12 @@ export const site = {
   figma:
     "https://www.figma.com/design/qYWN4HHQZ5ejQiMyGkZtOZ/urna-loading?node-id=9-1452",
   /**
-   * Quando o app for publicado, basta preencher as duas URLs abaixo.
-   * Com valor `null`, os selos aparecem em estado "Em breve" e não clicáveis.
+   * Informe o link direto do APK e o endereço da versão web.
+   * Com valor `null`, a opção fica desativada até o link ser configurado.
    */
-  stores: {
-    ios: null as string | null,
-    android: null as string | null,
+  access: {
+    apk: "/downloads/Urna%20Loading.apk",
+    web: "https://urna-35e78.web.app/",
   },
 } as const;
 

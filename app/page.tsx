@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { StoreBadges } from "@/components/store-badges";
+import { AppAccess } from "@/components/app-access";
 import { JoinScreen, PhoneFrame, ResultScreen, VotingScreen } from "@/components/phone";
 import { docs } from "@/content/docs";
 import { site } from "@/lib/site";
@@ -56,7 +56,7 @@ function Hero() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-teal opacity-70" />
                 <span className="relative inline-flex size-2 rounded-full bg-teal" />
               </span>
-              Feito pela {site.author} · Android e iOS
+              Feito pela {site.author} · Android e Web
             </span>
           </Reveal>
 
@@ -94,7 +94,7 @@ function Hero() {
 
           <Reveal delay={240}>
             <div className="mt-8">
-              <StoreBadges />
+              <AppAccess />
             </div>
           </Reveal>
 
@@ -580,18 +580,19 @@ function Download() {
             <div>
               <Reveal>
                 <h2 className="display text-[clamp(2rem,5vw,3.4rem)]">
-                  Baixe o Urna Loading e abra sua primeira eleição hoje.
+                  Use o Urna Loading e abra sua primeira eleição hoje.
                 </h2>
               </Reveal>
               <Reveal delay={90}>
                 <p className="mt-5 max-w-lg text-[17px] leading-relaxed text-white/80">
-                  Disponível para Android e iOS. Quem vota não precisa de conta — só do
-                  código da sala.
+                  Baixe o APK para Android ou participe online pelo navegador, inclusive
+                  no iPhone. A versão para iOS chega no futuro. Quem vota não precisa
+                  de conta — só do código da sala.
                 </p>
               </Reveal>
               <Reveal delay={160}>
                 <div className="mt-9">
-                  <StoreBadges tone="light" />
+                  <AppAccess tone="light" />
                 </div>
               </Reveal>
               <Reveal delay={220}>

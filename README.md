@@ -32,13 +32,13 @@ components/
 ├── site-header.tsx       # topo fixo com menu mobile
 ├── site-footer.tsx
 ├── phone.tsx             # moldura de celular + telas do app recriadas em CSS
-├── store-badges.tsx      # selos App Store / Google Play
+├── app-access.tsx        # download do APK, acesso web e iOS em breve
 ├── reveal.tsx            # revelação no scroll (IntersectionObserver)
 └── logo.tsx
 content/
 └── docs.ts               # conteúdo dos guias e tutoriais
 lib/
-└── site.ts               # nome, textos base e links das lojas
+└── site.ts               # nome, textos base e links do APK e da versão web
 public/
 ├── brand/urna-mark.svg   # marca, extraída do export do Figma
 └── illustrations/        # ilustrações reaproveitadas do app
@@ -63,8 +63,11 @@ Tipografia: Poppins (400/500/600/700), carregada via `next/font`.
 
 ## O que falta preencher
 
-1. **Links das lojas** — em `lib/site.ts`, `stores.ios` e `stores.android`. Enquanto
-   forem `null`, os selos aparecem em estado "Em breve" e não são clicáveis.
+1. **Links de acesso** — em `lib/site.ts`, preencha `access.apk` com o link direto
+   do arquivo APK (ou um caminho em `public`, como `/downloads/urna-loading.apk`)
+   e `access.web` com o endereço da versão web. Enquanto forem `null`, os botões
+   indicam "Link em breve" e não são clicáveis. O iOS permanece desativado como
+   opção futura; usuários de iPhone podem participar pela versão web.
 2. **Screenshots reais do app** — hoje as telas no site são recriadas em CSS a partir
    do design system (`components/phone.tsx`). Trocar por capturas reais é opcional.
 3. **Imagem de Open Graph** — adicionar `app/opengraph-image.png` (1200×630).

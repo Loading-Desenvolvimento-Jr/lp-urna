@@ -55,7 +55,7 @@ export const docs: Doc[] = [
           {
             type: "list",
             items: [
-              "Um aparelho Android ou iOS com o app instalado.",
+              "Um aparelho Android com o APK instalado ou um navegador para acessar a versão web, inclusive no iPhone e no computador.",
               "Conexão com a internet durante a votação.",
               "Para administrar: uma conta Google previamente autorizada pela organização.",
             ],
@@ -344,7 +344,7 @@ export const docs: Doc[] = [
         blocks: [
           {
             type: "p",
-            text: "O app é feito para celular — Android e iOS. É nele que o fluxo de votação foi desenhado e testado.",
+            text: "Sim. Acesse a versão web pelo navegador e entre com o código da sala. No Android, você também pode instalar o APK. A versão para iOS está prevista para o futuro; no iPhone, use a versão web.",
           },
         ],
       },
